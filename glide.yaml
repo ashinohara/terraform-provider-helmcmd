@@ -1,4 +1,4 @@
-package: github.com/djhaskin987/terraform-provider-helmcmd
+package: github.com/ashinohara/terraform-provider-helmcmd
 import:
 - package: github.com/dogenzaka/tsv
 - package: github.com/ghodss/yaml

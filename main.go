@@ -1,4 +1,4 @@
-package main // import "github.com/djhaskin987/terraform-provider-helmcmd"
+package main
 
 /*
 Copyright 2018 The Helm CMD TF Provider Authors, see the AUTHORS file.
@@ -18,7 +18,7 @@ limitations under the License.
 
 import (
 	"fmt"
-	"github.com/djhaskin987/terraform-provider-helmcmd/helmcmd"
+	"github.com/ashinohara/terraform-provider-helmcmd/helmcmd"
 	"github.com/hashicorp/terraform/helper/schema"
 	"github.com/hashicorp/terraform/plugin"
 	"github.com/hashicorp/terraform/terraform"
