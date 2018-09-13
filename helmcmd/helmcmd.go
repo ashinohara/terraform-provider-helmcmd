@@ -176,9 +176,12 @@ func (c *HelmCmd) Upgrade(release *HelmRelease) error {
 	}
 	log.Printf("%s\n", stdout.String())
 
-	_, err := c.helmReadFromList(release)
+	results, err := c.helmReadFromList(release)
 	if err != nil {
 		return err
+	}
+	if results.Status != "DEPLOYED" {
+		return ErrUnsuccessfulDeploy
 	}
 
 	return nil
@@ -208,6 +211,10 @@ func (c *HelmCmd) Read(release *HelmRelease) error {
 
 	if results.Status == "DELETED" {
 		return ErrHelmNotExist
+	}
+
+	if results.Status != "DEPLOYED" {
+		return ErrUnsuccessfulDeploy
 	}
 
 	release.Name = results.Name
