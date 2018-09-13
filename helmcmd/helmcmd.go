@@ -140,7 +140,7 @@ func (c *HelmCmd) Upgrade(release *HelmRelease) error {
 	stdout := &bytes.Buffer{}
 	upgradeArgs := c.globalArgs()
 	upgradeArgs = append(upgradeArgs, "upgrade", "--install", "--devel",
-		"-f", "-")
+		"--wait", "-f", "-")
 
 	upgradeArgs = append(upgradeArgs, "--version", release.ChartVersion)
 	upgradeArgs = append(upgradeArgs, "--namespace", release.Namespace)
