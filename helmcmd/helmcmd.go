@@ -278,7 +278,7 @@ func helmReadRow(release *HelmRelease, currentRow *HelmReleaseInfoRow) (*HelmRel
 func (c *HelmCmd) helmReadFromList(release *HelmRelease) (*HelmReleaseInfo, error) {
 	stdout := &bytes.Buffer{}
 	cmdArgs := []string{}
-	if c.KubeContext !=Unsuccessful deploy "" {
+	if c.KubeContext != "" {
 		cmdArgs = append(cmdArgs, "--kube-context", c.KubeContext)
 	}
 	if c.TillerNamespace  != "" {
