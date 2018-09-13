@@ -155,10 +155,10 @@ func (c *HelmCmd) Upgrade(release *HelmRelease) error {
 		if err := run(helmRepoUpdate); err != nil {
 			return err
 		}
-		helmDepUpdate := exec.Command("helm", "dependency", "update", chartLocation)
-		if err := run(helmDepUpdate); err != nil {
-			return err
-		}
+		//helmDepUpdate := exec.Command("helm", "dependency", "update", chartLocation)
+		//if err := run(helmDepUpdate); err != nil {
+		//	return err
+		//}
 		upgradeArgs = append(upgradeArgs, chartLocation)
 	}
 
