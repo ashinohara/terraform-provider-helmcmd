@@ -176,12 +176,9 @@ func (c *HelmCmd) Upgrade(release *HelmRelease) error {
 	}
 	log.Printf("%s\n", stdout.String())
 
-	results, err := c.helmReadFromList(release)
+	_, err := c.helmReadFromList(release)
 	if err != nil {
 		return err
-	}
-	if results.Status != "DEPLOYED" {
-		return ErrUnsuccessfulDeploy
 	}
 
 	return nil
@@ -211,10 +208,6 @@ func (c *HelmCmd) Read(release *HelmRelease) error {
 
 	if results.Status == "DELETED" {
 		return ErrHelmNotExist
-	}
-
-	if results.Status != "DEPLOYED" {
-		return ErrUnsuccessfulDeploy
 	}
 
 	release.Name = results.Name
@@ -285,7 +278,7 @@ func helmReadRow(release *HelmRelease, currentRow *HelmReleaseInfoRow) (*HelmRel
 func (c *HelmCmd) helmReadFromList(release *HelmRelease) (*HelmReleaseInfo, error) {
 	stdout := &bytes.Buffer{}
 	cmdArgs := []string{}
-	if c.KubeContext != "" {
+	if c.KubeContext !=Unsuccessful deploy "" {
 		cmdArgs = append(cmdArgs, "--kube-context", c.KubeContext)
 	}
 	if c.TillerNamespace  != "" {
