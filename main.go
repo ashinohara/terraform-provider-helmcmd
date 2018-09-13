@@ -130,6 +130,7 @@ func resourceManifest() *schema.Resource {
 				StateFunc: func(thing interface{}) string {
 					return helmcmd.AttemptNormalizeInput(thing.(string))
 				},
+				Sensitive: true,
 			},
 		},
 		Importer: &schema.ResourceImporter{
