@@ -309,7 +309,10 @@ func (c *HelmCmd) helmReadFromList(release *HelmRelease) (*HelmReleaseInfo, erro
 	log.Printf("Output:\n%s\n", cleanOutput)
 	currentRow := HelmReleaseInfoRow{}
 	r := strings.NewReader(cleanOutput)
-	parser, _ := tsv.NewParser(r, &currentRow)
+	parser, err := tsv.NewParser(r, &currentRow)
+	if err != nil {
+		return nil, ErrHelmNotExist
+	}
 
 	for {
 		eof, err := parser.Next()
